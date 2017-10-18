@@ -79,6 +79,10 @@ Branch.prototype.setMixpanelToken = function (token) {
   return execute('setMixpanelToken', [token])
 }
 
+Branch.prototype.setGoogleAnalyticsUserId = function (id) {
+  return execute('setGoogleAnalyticsUserId', [id])
+}
+
 Branch.prototype.setDebug = function (isEnabled) {
   isEnabled = typeof isEnabled !== 'boolean' ? false : isEnabled
   this.debugMode = isEnabled

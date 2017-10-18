@@ -133,6 +133,13 @@
 
 }
 
+- (void)setGoogleAnalyticsUserId:(CDVInvokedUrlCommand*)command
+{
+
+    [[Branch getInstance] setRequestMetadataKey:@"$google_analytics_user_id" value:[command.arguments objectAtIndex:0]];
+
+}
+
 - (void)setDebug:(CDVInvokedUrlCommand*)command
 {
     bool enableDebug = [[command.arguments objectAtIndex:0] boolValue] == YES;

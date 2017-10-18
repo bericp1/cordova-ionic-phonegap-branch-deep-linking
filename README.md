@@ -258,6 +258,9 @@
     // to sync with Mixpanel if plugin is installed
     Branch.setMixpanelToken('your_mixpanel_token')
 
+    // for Google Analytics User ID integration
+    Branch.setGoogleAnalyticsUserId('1234')
+
     // Branch initialization
     Branch.initSession(function(data) {
       if (data['+clicked_branch_link']) {

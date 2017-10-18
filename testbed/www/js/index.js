@@ -33,6 +33,9 @@ function BranchInit (isDebug) {
   // sync with Mixpanel if installed
   Branch.setMixpanelToken('your_mixpanel_token')
 
+  // sync with Google Analytics
+  Branch.setGoogleAnalyticsUserId('unique_user_id')
+
   // Branch initialization
   Branch.initSession(function (data) {
     if (data['+clicked_branch_link']) {

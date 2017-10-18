@@ -118,6 +118,9 @@ public class BranchSDK extends CordovaPlugin {
         } else if (action.equals("setMixpanelToken")) {
             cordova.getActivity().runOnUiThread(r);
             return true;
+        } else if (action.equals("setGoogleAnalyticsUserId")) {
+            cordova.getActivity().runOnUiThread(r);
+            return true;
         } else {
             if (this.instance != null) {
                 if (action.equals("setIdentity")) {
@@ -614,6 +617,20 @@ public class BranchSDK extends CordovaPlugin {
     private void setMixpanelToken(String token, CallbackContext callbackContext) {
 
         Branch.getInstance().setRequestMetadata("$mixpanel_distinct_id", token);
+
+        callbackContext.success("Success");
+
+    }
+
+    /**
+     * <p>Allow Branch SDK to pass the user's Google Analytics User ID through to GA when that integration is enabled.</p>
+     *
+     * @param id              A {@link String} value containing the Google Analytics User ID
+     * @param callbackContext A callback to execute at the end of this method
+     */
+    private void setGoogleAnalyticsUserId(String id, CallbackContext callbackContext) {
+
+        Branch.getInstance().setRequestMetadata("$google_analytics_user_id", id);
 
         callbackContext.success("Success");
 
@@ -1260,6 +1277,8 @@ public class BranchSDK extends CordovaPlugin {
                     initSession(this.callbackContext);
                 } else if (this.action.equals("setMixpanelToken")) {
                     setMixpanelToken(this.args.getString(0), this.callbackContext);
+                } else if (this.action.equals("setGoogleAnalyticsUserId")) {
+                    setGoogleAnalyticsUserId(this.args.getString(0), this.callbackContext);
                 } else {
                     if (this.action.equals("setIdentity")) {
                         setIdentity(this.args.getString(0), this.callbackContext);
